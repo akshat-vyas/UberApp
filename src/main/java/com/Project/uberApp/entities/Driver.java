@@ -12,6 +12,7 @@ import java.awt.*;
 @Getter
 @Setter
 public class Driver {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,11 +20,13 @@ public class Driver {
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
+
     private Double rating;
+
     private Boolean available;
 
     private String vehicleId;
 
-    @Column(columnDefinition = "Geometry(Point,4326)")
-    Point currentLocation;
+    @Column(columnDefinition = "Geometry(Point, 4326)")
+    private Point currentLocation;
 }

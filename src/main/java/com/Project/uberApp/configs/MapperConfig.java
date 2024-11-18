@@ -9,18 +9,19 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class MapperConfig {
-    @Bean
-    public ModelMapper modelMapper(){
-        ModelMapper mapper= new ModelMapper();
 
-        mapper.typeMap(PointDto.class, Point.class).setConverter(context->{
+    @Bean
+    public ModelMapper modelMapper() {
+        ModelMapper mapper = new ModelMapper();
+
+        mapper.typeMap(PointDto.class, Point.class).setConverter(context -> {
             PointDto pointDto = context.getSource();
             return GeometryUtil.createPoint(pointDto);
         });
 
-        mapper.typeMap(Point.class, PointDto.class).setConverter(context->{
+        mapper.typeMap(Point.class, PointDto.class).setConverter(context -> {
             Point point = context.getSource();
-            double coordinates[]= {
+            double coordinates[] = {
                     point.getX(),
                     point.getY()
             };
@@ -29,6 +30,5 @@ public class MapperConfig {
 
 
         return mapper;
-
     }
 }
