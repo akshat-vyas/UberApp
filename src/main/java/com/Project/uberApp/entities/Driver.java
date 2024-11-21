@@ -2,8 +2,7 @@ package com.Project.uberApp.entities;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.locationtech.jts.geom.Point;
 
 import java.awt.*;
@@ -11,6 +10,12 @@ import java.awt.*;
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(indexes = {
+        @Index(name="idx_driver_vehicle_id",columnList = "vehicleId")
+})
 public class Driver {
 
     @Id
